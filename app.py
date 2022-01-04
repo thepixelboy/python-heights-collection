@@ -24,13 +24,23 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/success", methods=["GET", "POST"])
+@app.route("/success", methods=["POST"])
 def success():
     if request.method == "POST":
         email = request.form["email-address"]
         height = request.form["height"]
         print(email, height)
-        return render_template("success.html")
+
+        if db.session.query(Data).filter(Data.email == email).count() == 0:
+            data = Data(email, height)
+            db.session.add(data)
+            db.session.commit()
+            return render_template("success.html")
+
+    return render_template(
+        "index.html",
+        message="The email address you've entered was already used",
+    )
 
 
 if __name__ == "__main__":

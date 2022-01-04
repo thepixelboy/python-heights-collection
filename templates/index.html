@@ -33,9 +33,13 @@
             id="email-address"
             name="email-address"
             placeholder="name@example.com"
+            aria-describedby="emailValidationFeedback"
             required
           />
           <label for="floatingInput">Email address</label>
+        </div>
+        <div id="emailValidationFeedback" class="invalid-feedback">
+          {{ message | safe }}
         </div>
         <div class="form-floating">
           <input

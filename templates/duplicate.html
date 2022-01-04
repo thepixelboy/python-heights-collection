@@ -14,12 +14,11 @@
   </head>
   <body class="text-center">
     <main class="form-signin">
-      <div class="bd-callout bd-callout-info">
-        <h3>Thank you for your submission!</h3>
+      <div class="bd-callout bd-callout-warning">
+        <h3>Opps!</h3>
         <p>
-          You will receive an email with the survey results shortly.
-          <a href="{{ url_for('index') }}">Return to home page</a> if you want
-          to add more data.
+          The email address you've entered is already in use.
+          <a href="{{ url_for('index') }}">Try again</a> with a different one.
         </p>
       </div>
     </main>
