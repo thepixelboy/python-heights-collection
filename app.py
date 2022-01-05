@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
+from send_email import send_email
+
 app = Flask(__name__)
 app.config[
     "SQLALCHEMY_DATABASE_URI"
@@ -29,9 +31,9 @@ def success():
     if request.method == "POST":
         email = request.form["email-address"]
         height = request.form["height"]
-        print(email, height)
 
         if db.session.query(Data).filter(Data.email == email).count() == 0:
+            send_email(email, height)
             data = Data(email, height)
             db.session.add(data)
             db.session.commit()
