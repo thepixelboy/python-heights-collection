@@ -12,6 +12,8 @@ db = SQLAlchemy(app)
 
 
 class Data(db.Model):
+    """Data model for the height collector"""
+
     __tablename__ = "data"
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True)
@@ -29,6 +31,7 @@ def index():
 
 @app.route("/success", methods=["POST"])
 def success():
+    """This function saves user email and height into the database"""
     if request.method == "POST":
         email = request.form["email-address"]
         height = request.form["height"]

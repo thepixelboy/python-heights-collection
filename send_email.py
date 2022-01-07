@@ -8,6 +8,7 @@ load_dotenv()
 
 
 def send_email(email_address, height, average_height, population):
+    """This function sends an email to the user, with height statistics"""
     smtp_server = os.getenv("MAILJET_SMTP")
     smtp_username = os.getenv("MAILJET_USERNAME")
     smtp_password = os.getenv("MAILJET_PASSWORD")
