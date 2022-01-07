@@ -23,9 +23,13 @@
           height="96"
         />
         <h1 class="h3 mb-3 fw-normal">Collecting people height</h1>
-        <h2 class="h4 mb-3 fw-normal">
-          Please fill in both fields to get population statistics
+        <h2 class="h5 mb-3 fw-normal">
+          Enter your data in the form fields below to get population statistics
+          on your email
         </h2>
+        <div id="emailValidationFeedback" class="invalid-feedback fw-bold py-2">
+          {{ message | safe }}
+        </div>
         <div class="form-floating">
           <input
             type="email"
@@ -37,9 +41,6 @@
             required
           />
           <label for="floatingInput">Email address</label>
-        </div>
-        <div id="emailValidationFeedback" class="invalid-feedback">
-          {{ message | safe }}
         </div>
         <div class="form-floating">
           <input

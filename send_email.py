@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def send_email(email_address, height):
+def send_email(email_address, height, average_height, population):
     smtp_server = os.getenv("MAILJET_SMTP")
     smtp_username = os.getenv("MAILJET_USERNAME")
     smtp_password = os.getenv("MAILJET_PASSWORD")
@@ -15,7 +15,7 @@ def send_email(email_address, height):
     from_email = email_address
     to_email = email_address
     subject = "Height data statistics"
-    message = f"Hey there, your height is <strong>{height}</strong>"
+    message = f"Hey there, your height is <strong>{height}cm</strong>.\nThe average height for the entire population of {population} people stored in the database is <strong>{average_height}cm</strong>."
 
     msg = MIMEText(message, "html")
     msg["Subject"] = subject
